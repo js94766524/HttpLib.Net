@@ -145,7 +145,7 @@ namespace HttpLib
         /// <returns></returns>
         public override string ToString()
         {
-            return URL + "," + FilePath;
+            return URL + "," + FilePath + "," + FileLength;
         }
 
         /// <summary>
