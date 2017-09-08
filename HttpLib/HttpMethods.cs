@@ -126,7 +126,7 @@ namespace HttpLib
         /// <param name="timeOut">默认20秒</param>
         /// <param name="encoding">响应内容的编码类型（默认utf-8）</param>
         /// <returns></returns>
-        public static string PostForm( string url, List<MultipartFormItem> formItems, CookieContainer cookieContainer = null, string refererUrl = null, Encoding encoding = null, int timeOut = 20000 )
+        public static string PostForm( string url, List<FormItem> formItems, CookieContainer cookieContainer = null, string refererUrl = null, Encoding encoding = null, int timeOut = 20000 )
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
@@ -167,12 +167,12 @@ namespace HttpLib
                 foreach (var item in formItems)
                 {
                     string formdata = null;
-                    if (item.ItemType == FormItemType.File)
+                    if (item.IsFile)
                     {
                         //上传文件
                         formdata = string.Format(
                             fileFormdataTemplate,
-                            item.Name, //表单键
+                            item.Key, //表单键
                             item.FileName);
                     }
                     else
@@ -180,8 +180,8 @@ namespace HttpLib
                         //上传文本
                         formdata = string.Format(
                             dataFormdataTemplate,
-                            item.Name,
-                            encoding.GetString(item.Data));
+                            item.Key,
+                            item.Value);
                     }
 
                     //统一处理
@@ -194,18 +194,17 @@ namespace HttpLib
                     postStream.Write(formdataBytes, 0, formdataBytes.Length);
 
                     //写入文件内容
-                    if (item.Data != null && item.Data.Length > 0)
+                    if (item.FileContent != null && item.FileContent.Length > 0)
                     {
-                        postStream.Write(item.Data, 0, item.Data.Length);
-                        //using (var stream = item.FileContent)
-                        //{
-                        //    byte[] buffer = new byte[1024];
-                        //    int bytesRead = 0;
-                        //    while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) != 0)
-                        //    {
-                        //        postStream.Write(buffer, 0, bytesRead);
-                        //    }
-                        //}
+                        using (var stream = item.FileContent)
+                        {
+                            byte[] buffer = new byte[1024];
+                            int bytesRead = 0;
+                            while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) != 0)
+                            {
+                                postStream.Write(buffer, 0, bytesRead);
+                            }
+                        }
                     }
                 }
                 //结尾

@@ -6,7 +6,6 @@ using System.Text;
 
 namespace HttpLib
 {
-    [Obsolete("使用MultipartFormItem代替")]
     public class FormItem
     {
         /// <summary>  
