@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace HttpLib
+namespace HttpLib.Server
 {
     public class MultipartFormItem
     {
@@ -22,7 +22,6 @@ namespace HttpLib
 
     public static class MultipartFormItemExtends
     {
-
         public static string SaveAsFile( this MultipartFormItem item, string fileDir, string fileName = null, bool cover = true )
         {
             if (item.ItemType != FormItemType.File) throw new NotSupportedException("ItemType must be FormItemType.File");

@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace HttpLib
+namespace HttpLib.Client
 {
     public class FormItem
     {

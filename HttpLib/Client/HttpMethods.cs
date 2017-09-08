@@ -4,9 +4,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text;
-using System.Threading;
 
-namespace HttpLib
+namespace HttpLib.Client
 {
     public static class HttpMethods
     {

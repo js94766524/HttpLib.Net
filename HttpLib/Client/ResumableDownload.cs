@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace HttpLib
+namespace HttpLib.Client
 {
     /// <summary>
     /// 可断点续传的异步单线程文件下载工具类

@@ -7,7 +7,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace HttpLib
+namespace HttpLib.Server
 {
     /*
      RFC1867协议 举例     
