@@ -43,10 +43,15 @@
   <ItemGroup>
     <Compile Include="Client\FormItem.cs" />
     <Compile Include="Client\HttpMethods.cs" />
-    <Compile Include="CommonTools.cs" />
+    <Compile Include="Server\DefaultRequestHandlerFactory.cs" />
+    <Compile Include="Server\DefaultRequestHandler.cs" />
+    <Compile Include="Server\Interfaces\IRequestHandler.cs" />
+    <Compile Include="Server\Interfaces\IRequestHandlerFactory.cs" />
+    <Compile Include="Tools.cs" />
     <Compile Include="CustomEventArgs\BaseCustomEventArgs.cs" />
     <Compile Include="CustomEventArgs\ExceptionEventArgs.cs" />
     <Compile Include="CustomEventArgs\RequestEventArgs.cs" />
+    <Compile Include="Server\AbstractRequestHandler.cs" />
     <Compile Include="Server\HttpMultipartFormParser.cs" />
     <Compile Include="Server\HttpServer.cs" />
     <Compile Include="Server\MultipartFormItem.cs" />

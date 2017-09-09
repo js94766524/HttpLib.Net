@@ -43,9 +43,9 @@ namespace HttpLib.Server
         private string _partName;
         private Encoding _encoding;
 
-        public HttpMultipartFormParser( HttpListenerRequest request, Encoding encoding )
+        public HttpMultipartFormParser( HttpListenerRequest request )
         {
-            this._encoding = encoding;
+            this._encoding = request.ContentEncoding;
             //Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
             Regex regex = new Regex("boundary=(.*)$");
 
@@ -265,9 +265,10 @@ namespace HttpLib.Server
         /// 解析数据为对象列表
         /// </summary>
         /// <returns></returns>
-        public List<MultipartFormItem> ParseIntoElementList()
+        public Dictionary<string, MultipartFormItem> ParseIntoElementList()
         {
-            List<MultipartFormItem> itemList = new List<MultipartFormItem>();
+            Dictionary<string, MultipartFormItem> itemDict = new Dictionary<string, MultipartFormItem>();
+            //List<MultipartFormItem> itemList = new List<MultipartFormItem>();
 
             while (GetNextLine())
             {
@@ -276,7 +277,7 @@ namespace HttpLib.Server
             }
 
             if (AtEndOfData())
-                return itemList;
+                return itemDict;
 
             do
             {
@@ -312,15 +313,14 @@ namespace HttpLib.Server
                     {
                         item.ItemType = FormItemType.Text;
                     }
-
-                    itemList.Add(item);
+                    itemDict[item.Name] = item;
                 }
             }
             while (!AtEndOfData());
 
-            return itemList;
+            return itemDict;
         }
 
-        
+
     }
 }

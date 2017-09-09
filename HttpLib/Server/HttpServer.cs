@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using HttpLib.CustomEventArgs;
+using HttpLib.Server.Interfaces;
 
 namespace HttpLib.Server
 {
@@ -15,7 +17,7 @@ namespace HttpLib.Server
         public string IP { get; private set; }
         public uint PORT { get; private set; }
         public string URL { get; private set; }
-        public IRequestHandler RequestHandler { get; set; }
+        public IRequestHandlerFactory HandlerFactory { get; set; }
 
         public bool Running { get { return httpListener != null && httpListener.IsListening; } }
         public event EventHandler<ExceptionEventArgs> OnError;
@@ -24,10 +26,10 @@ namespace HttpLib.Server
         private HttpListener httpListener;
         private Thread responseThread;
 
-        public HttpServer( uint port, IRequestHandler requestHandler = null )
+        public HttpServer( uint port, IRequestHandlerFactory factory )
         {
-            if (requestHandler != null) RequestHandler = requestHandler;
-            else RequestHandler = new DefaultRequestHandler();
+            if (factory != null) HandlerFactory = factory;
+            else HandlerFactory = new DefaultRequestHandlerFactory();
 
             httpListener = new HttpListener();
             responseThread = new Thread(ResponseThreadLoop) { IsBackground = true };
@@ -66,7 +68,7 @@ namespace HttpLib.Server
                 var c = state as HttpListenerContext;
                 try
                 {
-                    var respBytes = RequestHandler.Handle(c.Request);
+                    var respBytes = HandlerFactory.GetHandler(c.Request).Handle();
                     c.Response.OutputStream.Write(respBytes, 0, respBytes.Length);
                 }
                 finally
@@ -106,41 +108,7 @@ namespace HttpLib.Server
         }
     }
 
+    
 
-    public interface IRequestHandler
-    {
-        byte[] Handle( HttpListenerRequest request );
-    }
-
-    class DefaultRequestHandler : IRequestHandler
-    {
-        public byte[] Handle( HttpListenerRequest request )
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("---" + GetType().Name + "----");
-            sb.Append("[Url]:").AppendLine(request.Url.ToString());
-            sb.Append("[AbsolutePath]:").AppendLine(request.Url.AbsolutePath);
-
-
-            sb.AppendLine("[Headers]");
-            foreach (string key in request.Headers.AllKeys)
-            {
-                sb.Append("    → [").Append(key).Append("]:").AppendLine(request.Headers[key]);
-            }
-            sb.AppendLine();
-            sb.AppendLine("[QueryString]");
-            foreach (string key in request.QueryString)
-            {
-                sb.Append("    → [").Append(key).Append("]:").AppendLine(request.QueryString[key]);
-            }
-            sb.AppendLine();
-            sb.AppendLine("[InputStream]");
-            using (StreamReader reader = new StreamReader(request.InputStream))
-            {
-                sb.AppendLine(reader.ReadToEnd());
-            }
-            sb.AppendLine("---END---");
-            return Encoding.UTF8.GetBytes(sb.ToString());
-        }
-    }
+    
 }

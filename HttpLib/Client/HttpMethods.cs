@@ -187,9 +187,9 @@ namespace HttpLib.Client
                     byte[] formdataBytes = null;
                     //第一行不需要换行
                     if (postStream.Length == 0)
-                        formdataBytes = Encoding.UTF8.GetBytes(formdata.Substring(2, formdata.Length - 2));
+                        formdataBytes = encoding.GetBytes(formdata.Substring(2, formdata.Length - 2));
                     else
-                        formdataBytes = Encoding.UTF8.GetBytes(formdata);
+                        formdataBytes = encoding.GetBytes(formdata);
                     postStream.Write(formdataBytes, 0, formdataBytes.Length);
 
                     //写入文件内容
@@ -207,7 +207,7 @@ namespace HttpLib.Client
                     }
                 }
                 //结尾
-                var footer = Encoding.UTF8.GetBytes("\r\n--" + boundary + "--\r\n");
+                var footer = encoding.GetBytes("\r\n--" + boundary + "--\r\n");
                 postStream.Write(footer, 0, footer.Length);
 
             }
