@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -230,6 +231,8 @@
             // 
             // dataGridView_FILE
             // 
+            this.dataGridView_FILE.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView_FILE.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView_FILE.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView_FILE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_FILE.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -266,11 +269,13 @@
             // 
             this.KEY2.HeaderText = "KEY";
             this.KEY2.Name = "KEY2";
+            this.KEY2.Width = 55;
             // 
             // FILE
             // 
             this.FILE.HeaderText = "FILE";
             this.FILE.Name = "FILE";
+            this.FILE.Width = 56;
             // 
             // openFileDialog1
             // 
@@ -283,10 +288,11 @@
             this.ClientSize = new System.Drawing.Size(778, 448);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
-            this.Text = "HttpTest";
+            this.Text = "HTTP TEST";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

@@ -12,8 +12,8 @@ namespace ConsoleTest
         static void Main( string[] args )
         {
 
-            HttpServer server = new HttpServer(12580);
-            //server.RequestHandler = new handler();
+            HttpServer server = new HttpServer(12580,null);
+            server.HandlerFactory = new DefaultRequestHandlerFactory<handler>();
             server.Start();
             if (server.Running)
             {
@@ -28,11 +28,15 @@ namespace ConsoleTest
             Console.ReadLine();
         }
 
-        class handler : IRequestHandler
+        class handler : AbstractRequestHandler
         {
-            public byte[] Handle( HttpListenerRequest request )
+            public handler( HttpListenerRequest request ) : base(request)
             {
-                return Encoding.UTF8.GetBytes("woca");
+            }
+
+            protected override byte[] HandleRequest( string url )
+            {
+                return Request.ContentEncoding.GetBytes("handler!");
             }
         }
     }
