@@ -13,8 +13,9 @@ namespace ConsoleTest
         {
 
             HttpServer server = new HttpServer(12580,null);
-            server.HandlerFactory = new DefaultRequestHandlerFactory<handler>();
+            server.HandlerFactory = new DefaultRequestHandlerFactory();
             server.Start();
+
             if (server.Running)
             {
                 Console.WriteLine("Server is running");

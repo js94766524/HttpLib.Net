@@ -52,7 +52,7 @@
     <Compile Include="CustomEventArgs\ExceptionEventArgs.cs" />
     <Compile Include="CustomEventArgs\RequestEventArgs.cs" />
     <Compile Include="Server\AbstractRequestHandler.cs" />
-    <Compile Include="Server\HttpMultipartFormParser.cs" />
+    <Compile Include="Server\MultipartFormParser.cs" />
     <Compile Include="Server\HttpServer.cs" />
     <Compile Include="Server\MultipartFormItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

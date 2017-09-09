@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HttpLib.Server.Interfaces
 {
-    public interface IRequestHandler
+    public interface IRequestHandler:IDisposable
     {
         byte[] Handle();
     }

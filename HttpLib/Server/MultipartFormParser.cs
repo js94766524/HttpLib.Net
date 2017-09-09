@@ -26,7 +26,7 @@ namespace HttpLib.Server
     /// <summary>
     /// 解析RFC1867协议
     /// </summary>
-    public class HttpMultipartFormParser
+    public class MultipartFormParser
     {
         private string boundary;
         private byte[] _boundary;
@@ -43,7 +43,7 @@ namespace HttpLib.Server
         private string _partName;
         private Encoding _encoding;
 
-        public HttpMultipartFormParser( HttpListenerRequest request )
+        public MultipartFormParser( HttpListenerRequest request )
         {
             this._encoding = request.ContentEncoding;
             //Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW

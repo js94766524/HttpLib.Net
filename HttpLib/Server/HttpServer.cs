@@ -68,8 +68,11 @@ namespace HttpLib.Server
                 var c = state as HttpListenerContext;
                 try
                 {
-                    var respBytes = HandlerFactory.GetHandler(c.Request).Handle();
-                    c.Response.OutputStream.Write(respBytes, 0, respBytes.Length);
+                    using (var handler = HandlerFactory.GetHandler(c.Request))
+                    {
+                        var respBytes = handler.Handle();
+                        c.Response.OutputStream.Write(respBytes, 0, respBytes.Length);
+                    }
                 }
                 finally
                 {
@@ -108,7 +111,7 @@ namespace HttpLib.Server
         }
     }
 
-    
 
-    
+
+
 }
