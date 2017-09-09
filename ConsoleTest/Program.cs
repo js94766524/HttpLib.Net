@@ -13,7 +13,7 @@ namespace ConsoleTest
         {
 
             HttpServer server = new HttpServer(12580);
-            server.RequestHandler = new handler();
+            //server.RequestHandler = new handler();
             server.Start();
             if (server.Running)
             {
