@@ -19,14 +19,17 @@ namespace HttpLib.Server
         /// 是否将数据解析为参数或表单项目
         /// </summary>
         public bool ParseParams { get; set; }
+
         /// <summary>
         /// 请求对象
         /// </summary>
         protected HttpListenerRequest Request { get; set; }
+
         /// <summary>
         /// 参数集合，如果没有发送参数则为null
         /// </summary>
         protected NameValueCollection Params { get; set; }
+
         /// <summary>
         /// 表单项目集合，如果不是表单提交则为null
         /// </summary>

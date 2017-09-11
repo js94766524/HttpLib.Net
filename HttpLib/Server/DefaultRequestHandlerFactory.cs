@@ -7,6 +7,9 @@ using HttpLib.Server.Interfaces;
 
 namespace HttpLib.Server
 {
+    /// <summary>
+    /// 仅能创建DefaultRequestHandler的实例的默认工厂
+    /// </summary>
     public class DefaultRequestHandlerFactory : IRequestHandlerFactory
     {
         public IRequestHandler GetHandler( HttpListenerRequest request )
@@ -15,6 +18,10 @@ namespace HttpLib.Server
         }
     }
 
+    /// <summary>
+    /// 使用反射获取泛型类型的构造方法来创建实例
+    /// </summary>
+    /// <typeparam name="T">IRequestHandler的实现类，需要含有符合“仅有一个HttpListenerRequest参数”要求的构造方法</typeparam>
     public class DefaultRequestHandlerFactory<T> : IRequestHandlerFactory where T:IRequestHandler
     {
         public IRequestHandler GetHandler( HttpListenerRequest request )

@@ -12,6 +12,18 @@ namespace HttpLib.Server
         public byte[] Data { get;  set; }
         public string ContentType { get;  set; }
         public FormItemType ItemType { get;  set; }
+
+        public override string ToString()
+        {
+            if(ItemType == FormItemType.File)
+            {
+                return Name + "=file[" + FileName+"]["+Data.Length+"]";
+            }
+            else
+            {
+                return Name + "=" + this.GetDataAsString();
+            }
+        }
     }
 
     public enum FormItemType

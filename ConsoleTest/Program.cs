@@ -12,14 +12,17 @@ namespace ConsoleTest
         static void Main( string[] args )
         {
 
-            HttpServer server = new HttpServer(12580,null);
-            server.HandlerFactory = new DefaultRequestHandlerFactory();
+            HttpServer server = new HttpServer(null, 12580, 12581, 12582, 12583);
+            server.HandlerFactory = new DefaultRequestHandlerFactory<handler>();
             server.Start();
 
             if (server.Running)
             {
                 Console.WriteLine("Server is running");
-                Console.WriteLine("Listening to " + server.URL);
+                foreach (var p in server.Prefixes)
+                {
+                    Console.WriteLine("Listening to " + p);
+                }
 
             }
             else
@@ -37,7 +40,7 @@ namespace ConsoleTest
 
             protected override byte[] HandleRequest( string url )
             {
-                return Request.ContentEncoding.GetBytes("handler!");
+                return Request.ContentEncoding.GetBytes("handle " + url);
             }
         }
     }

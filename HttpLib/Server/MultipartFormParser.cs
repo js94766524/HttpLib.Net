@@ -10,6 +10,14 @@ using System.Text.RegularExpressions;
 namespace HttpLib.Server
 {
     /*
+     * 这个解析类是某个大神翻微软的源码之后分享出来的
+     * 当时因为赶项目直接复制粘贴过来用了
+     * 现在我对原帖的代码做了一点调整以适应我的需求
+     * 可惜忘了留个原帖子的地址
+     * 在此向那位大神表示感谢
+     */
+
+     /*
      RFC1867协议 举例     
      ------WebKitFormBoundaryKcbJOyftlttL1JBB
     Content-Disposition: form-data; name="name"

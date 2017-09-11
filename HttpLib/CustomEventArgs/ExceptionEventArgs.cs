@@ -5,15 +5,13 @@ using System.Text;
 
 namespace HttpLib.CustomEventArgs
 {
-    public class ExceptionEventArgs:BaseCustomEventArgs
+    public class ExceptionEventArgs : BaseCustomEventArgs
     {
-        private Exception e;
-
         public ExceptionEventArgs( Exception e )
         {
-            this.e = e;
+            this.Error = e;
         }
-        
+
         public Exception Error { get; set; }
     }
 }

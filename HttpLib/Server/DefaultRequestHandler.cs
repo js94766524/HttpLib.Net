@@ -9,11 +9,9 @@ namespace HttpLib.Server
 {
     class DefaultRequestHandler : AbstractRequestHandler
     {
-        public DefaultRequestHandler( HttpListenerRequest request ) : base(request)
-        {
-        }
+        public DefaultRequestHandler( HttpListenerRequest request ) : base(request) { }
 
-        protected override byte[] HandleRequest(string url)
+        protected override byte[] HandleRequest( string url )
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("TIME:").AppendLine(DateTime.Now.ToString());
@@ -26,7 +24,7 @@ namespace HttpLib.Server
             if (Params != null)
             {
                 sb.AppendLine("PARAMS:");
-                foreach(string key in Params)
+                foreach (string key in Params)
                 {
                     sb.Append("    ").Append(key).Append("=").AppendLine(Params[key]);
                 }
@@ -34,11 +32,11 @@ namespace HttpLib.Server
             if (FormItems != null)
             {
                 sb.AppendLine("FORM_ITEMS:");
-                foreach(var kv in FormItems)
+                foreach (var kv in FormItems)
                 {
                     var item = kv.Value;
                     sb.Append("    ");
-                    if(item.ItemType == FormItemType.Text)
+                    if (item.ItemType == FormItemType.Text)
                     {
                         sb.Append(item.Name).Append("=").Append(item.GetDataAsString(Request.ContentEncoding));
                     }
@@ -51,6 +49,6 @@ namespace HttpLib.Server
             }
             return Request.ContentEncoding.GetBytes(sb.ToString());
         }
-        
+
     }
 }
