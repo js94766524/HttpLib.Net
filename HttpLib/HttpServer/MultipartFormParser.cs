@@ -7,7 +7,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace HttpLib.Server
+namespace HttpLib.HttpServer
 {
     /*
      * 这个解析类是某个大神翻微软的源码之后分享出来的

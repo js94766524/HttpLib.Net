@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using HttpLib.Server.Interfaces;
+using HttpLib.HttpServer.Interfaces;
 
-namespace HttpLib.Server
+namespace HttpLib.HttpServer
 {
     /// <summary>
     /// 抽象RequestHandler类，封装了解析参数等过程，可以在实现抽象方法时直接调用GetParam方法或GetFormItem方法

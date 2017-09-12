@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace HttpLib.Server
+namespace HttpLib.HttpServer
 {
     public class MultipartFormItem
     {

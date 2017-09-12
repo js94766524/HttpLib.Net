@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace HttpLib.Client
+namespace HttpLib.HttpClient
 {
     /// <summary>
     /// 可断点续传的异步单线程文件下载工具类
@@ -77,7 +77,7 @@ namespace HttpLib.Client
                     }
 
                     URL.Download(this, _startPosition);
-                    if(Progress == 100) Finished?.Invoke(this, new EventArgs());
+                    if(Progress == 100) Finished?.Invoke(this, new System.EventArgs());
                 }
                 catch (Exception e)
                 {

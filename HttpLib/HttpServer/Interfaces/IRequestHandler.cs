@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 
-namespace HttpLib.Server.Interfaces
+namespace HttpLib.HttpServer.Interfaces
 {
     public interface IRequestHandler:IDisposable
     {

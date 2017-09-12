@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,21 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client\FormItem.cs" />
-    <Compile Include="Client\HttpMethods.cs" />
-    <Compile Include="Server\DefaultRequestHandlerFactory.cs" />
-    <Compile Include="Server\DefaultRequestHandler.cs" />
-    <Compile Include="Server\Interfaces\IRequestHandler.cs" />
-    <Compile Include="Server\Interfaces\IRequestHandlerFactory.cs" />
+    <Compile Include="HttpClient\FormItem.cs" />
+    <Compile Include="HttpClient\HttpMethods.cs" />
+    <Compile Include="HttpServer\DefaultRequestHandlerFactory.cs" />
+    <Compile Include="HttpServer\DefaultRequestHandler.cs" />
+    <Compile Include="HttpServer\Interfaces\IRequestHandler.cs" />
+    <Compile Include="HttpServer\Interfaces\IRequestHandlerFactory.cs" />
+    <Compile Include="Remoting\Client\RemotingClient.cs" />
+    <Compile Include="Remoting\Server\RemotingServer.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="CustomEventArgs\BaseCustomEventArgs.cs" />
     <Compile Include="CustomEventArgs\ExceptionEventArgs.cs" />
-    <Compile Include="Server\AbstractRequestHandler.cs" />
-    <Compile Include="Server\MultipartFormParser.cs" />
-    <Compile Include="Server\HttpServer.cs" />
-    <Compile Include="Server\MultipartFormItem.cs" />
+    <Compile Include="HttpServer\AbstractRequestHandler.cs" />
+    <Compile Include="HttpServer\MultipartFormParser.cs" />
+    <Compile Include="HttpServer\HttpServer.cs" />
+    <Compile Include="HttpServer\MultipartFormItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Client\ResumableDownload.cs" />
+    <Compile Include="HttpClient\ResumableDownload.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

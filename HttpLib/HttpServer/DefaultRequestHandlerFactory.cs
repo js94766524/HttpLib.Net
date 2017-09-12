@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
-using HttpLib.Server.Interfaces;
+using HttpLib.HttpServer.Interfaces;
 
-namespace HttpLib.Server
+namespace HttpLib.HttpServer
 {
     /// <summary>
     /// 仅能创建DefaultRequestHandler的实例的默认工厂

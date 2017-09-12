@@ -7,10 +7,10 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
-using HttpLib.CustomEventArgs;
-using HttpLib.Server.Interfaces;
+using HttpLib.EventArgs;
+using HttpLib.HttpServer.Interfaces;
 
-namespace HttpLib.Server
+namespace HttpLib.HttpServer
 {
     /// <summary>
     /// 一个简单易用的Http服务器类

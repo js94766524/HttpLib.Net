@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HttpLib.CustomEventArgs
+namespace HttpLib.EventArgs
 {
     public class ExceptionEventArgs : BaseCustomEventArgs
     {
