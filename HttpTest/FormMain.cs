@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using HttpLib.Client;
+using HttpLib.HttpClient;
 
 namespace HttpTest
 {
@@ -29,11 +29,11 @@ namespace HttpTest
                 if (radioButton_Get.Checked)
                 {
                     if (!string.IsNullOrEmpty(data)) url += "?" + data;
-                    resp = HttpLib.Client.HttpMethods.Get(url);
+                    resp = HttpLib.HttpClient.HttpMethods.Get(url);
                 }
                 else if (radioButton_Post.Checked)
                 {
-                    resp = HttpLib.Client.HttpMethods.Post(url, data);
+                    resp = HttpLib.HttpClient.HttpMethods.Post(url, data);
                 }
                 richTextBox1.Text = resp;
 
