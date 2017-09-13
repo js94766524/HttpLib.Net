@@ -35,7 +35,7 @@ namespace HttpLib.Remoting.Client
         /// <param name="prefixUri">服务端地址，例如“tcp://localhost:6666/”</param>
         /// <param name="objectUri">类型地址，例如“RemotingObject”</param>
         /// <returns>服务器对象的代理</returns>
-        public static T GetRemotingObj<T>( string prefixUri, string objectUri = null ) where T : MarshalByRefObject
+        public static T GetRemotingObj<T>( string prefixUri, string objectUri = null )
         {
             if (!ChannelRegistered) RegisterChannel();
             Type t = typeof(T);
@@ -43,7 +43,7 @@ namespace HttpLib.Remoting.Client
             string url = (prefixUri.StartsWith("tcp://") ? "" : "tcp://") + prefixUri + (prefixUri.EndsWith("/") ? "" : "/") + objectUri;
             try
             {
-                return Activator.GetObject(t, url) as T;
+                return (T)Activator.GetObject(t, url);
             }
             catch
             {
