@@ -48,6 +48,10 @@
       <Project>{c01a02e9-5100-45b2-b5ab-1dec523fc71b}</Project>
       <Name>HttpLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RemotingInterface\RemotingInterface.csproj">
+      <Project>{E59AF86B-E352-489D-B7C7-44D3EB1679DF}</Project>
+      <Name>RemotingInterface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

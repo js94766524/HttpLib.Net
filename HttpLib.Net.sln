@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpLib", "HttpLib\HttpLib.csproj", "{C01A02E9-5100-45B2-B5AB-1DEC523FC71B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{EA879F58-78A1-4596-BE86-063DD0F5C716}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTest", "HttpTest\HttpTest.csproj", "{7F2177F2-1A36-480D-AABC-4E1554979A29}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{C01A02E9-5100-45B2-B5AB-1DEC523FC71B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C01A02E9-5100-45B2-B5AB-1DEC523FC71B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C01A02E9-5100-45B2-B5AB-1DEC523FC71B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA879F58-78A1-4596-BE86-063DD0F5C716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA879F58-78A1-4596-BE86-063DD0F5C716}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA879F58-78A1-4596-BE86-063DD0F5C716}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA879F58-78A1-4596-BE86-063DD0F5C716}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7F2177F2-1A36-480D-AABC-4E1554979A29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7F2177F2-1A36-480D-AABC-4E1554979A29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F2177F2-1A36-480D-AABC-4E1554979A29}.Release|Any CPU.ActiveCfg = Release|Any CPU
