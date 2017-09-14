@@ -50,6 +50,9 @@
     <Compile Include="HttpServer\Interfaces\IRequestHandlerFactory.cs" />
     <Compile Include="Remoting\Client\RemotingClient.cs" />
     <Compile Include="Remoting\Server\RemotingServer.cs" />
+    <Compile Include="Sockets\SocketCommands.cs" />
+    <Compile Include="Sockets\SocketServer.cs" />
+    <Compile Include="Sockets\SocketState.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="CustomEventArgs\BaseCustomEventArgs.cs" />
     <Compile Include="CustomEventArgs\ExceptionEventArgs.cs" />

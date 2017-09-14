@@ -71,11 +71,11 @@ namespace HttpTest
             string url = textBox3.Text.Trim();
             try
             {
-                richTextBox2.Text = HttpMethods.PostForm(url, list);
+                richTextBox1.Text = HttpMethods.PostForm(url, list);
             }
             catch (Exception ex)
             {
-                richTextBox2.Text = ex.ToString();
+                richTextBox1.Text = ex.ToString();
             }
         }
 
