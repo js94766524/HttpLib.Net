@@ -29,10 +29,10 @@ namespace HttpLib
             {
                 if (addr.AddressFamily == AddressFamily.InterNetwork) return addr.ToString();
             }
-            
+
             return "NO_INTERNET_WORK";
         }
-        
+
         /// <summary>
         /// 将URL中的参数串解析为键值对集合
         /// </summary>
@@ -74,6 +74,42 @@ namespace HttpLib
                 }
 
                 return ms.ToArray();
+            }
+        }
+
+        /// <summary>
+        /// 将文件转换为Base64字符串
+        /// </summary>
+        /// <param name="filePath">文件路径</param>
+        /// <param name="bufferSize">缓冲区大小，默认200（200 * 12 = 4800）</param>
+        /// <returns>Base64字符串</returns>
+        public static string FileToBase64String( string filePath, int bufferSize = 200 )
+        {
+            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                byte[] buffer = new byte[bufferSize * 12];
+                int offset = 0;
+                int count = 0;
+                StringBuilder sb = new StringBuilder();
+                while ((count = fs.Read(buffer, offset, bufferSize * 12)) > 0)
+                {
+                    sb.Append(Convert.ToBase64String(buffer, 0, count));
+                }
+                return sb.ToString();
+            }
+        }
+
+        /// <summary>
+        /// 将Base64字符串转化为文件
+        /// </summary>
+        /// <param name="base64">Base64字符串</param>
+        /// <param name="filePath">保存文件的路径</param>
+        public static void FileFromBase64String( string base64, string filePath )
+        {
+            using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+            {
+                byte[] source = Convert.FromBase64String(base64);
+                fs.Write(source, 0, source.Length);
             }
         }
     }
