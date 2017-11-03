@@ -81,7 +81,7 @@ namespace HttpTest
 
         private void dataGridView_FILE_CellDoubleClick( object sender, DataGridViewCellEventArgs e )
         {
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string key = openFileDialog1.SafeFileName;
                 string file = openFileDialog1.FileName;
@@ -91,6 +91,11 @@ namespace HttpTest
                 row.Cells["KEY2"].Value = key;
                 row.Cells["FILE"].Value = file;
             }
+        }
+
+        private void base64ToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+            new Base64ToolForm().ShowDialog();
         }
     }
 }
